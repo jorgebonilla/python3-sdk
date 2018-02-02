@@ -1,7 +1,6 @@
 from urllib.request import Request, urlopen, URLError
 from urllib.parse import quote
 from requests.utils import requote_uri
-import codecs
 from time import sleep
 import urllib, ssl, json, logging
 import os
@@ -138,3 +137,11 @@ class Aviatrix:
                                                     "username": username,
                                                     "user_email": user_email,
                                                     "profile_name": profile_name })
+                                                    
+    def restore_cloudx_config(self, cloud_type, access_key, secret_key, bucket_name, filename):
+        self.avx_api_call("POST", "restore_cloudx_config", { "CID": self.CID,
+                                                            "cloud_type": cloud_type,
+                                                            "access_key": access_key,
+                                                            "secret_key": secret_key,
+                                                            "bucket_name": bucket_name,
+                                                            "filename": filename })
